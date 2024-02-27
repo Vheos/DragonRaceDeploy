@@ -21,6 +21,7 @@
       </div>
     </div>
     <div id="unity-fullscreen-button" style="display: none;"></div>
+
     <script>
       const hideFullScreenButton = "1";
       const buildUrl = "Build";
@@ -64,6 +65,7 @@
       }
       loadingCover.style.display = "";
 
+      let UnityInstance = null;
       const script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
@@ -72,6 +74,7 @@
           progressBarEmpty.style.display = "";
           progressBarFull.style.width = `${100 * progress}%`;
         }).then((unityInstance) => {
+          UnityInstance = unityInstance;
           loadingCover.style.display = "none";
           if (canFullscreen) {
             if (!hideFullScreenButton) {
